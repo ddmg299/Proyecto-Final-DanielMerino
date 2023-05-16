@@ -1,6 +1,27 @@
-C:\Users\Formacion\Desktop\ProyectosJavaEE\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\dao\UsuarioDao.java
-C:\Users\Formacion\Desktop\ProyectosJavaEE\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\configuration\Conexion.java
-C:\Users\Formacion\Desktop\ProyectosJavaEE\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\model\Producto.java
-C:\Users\Formacion\Desktop\ProyectosJavaEE\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\model\Usuario.java
-C:\Users\Formacion\Desktop\ProyectosJavaEE\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\controller\HomeController.java
-C:\Users\Formacion\Desktop\ProyectosJavaEE\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\dao\ProductoDao.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\dao\ProductoDao.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\service\ConfiguracionService.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\service\PedidoService.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\controller\UserController.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\controller\CompraController.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\controller\HistorialController.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\service\ProductoService.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\model\Categoria.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\model\Producto.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\controller\HomeController.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\controller\CarritoController.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\dao\UsuarioDao.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\controller\ContactoController.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\dao\ConfiguracionDao.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\model\Usuario.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\dao\DAO.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\configuration\Conexion.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\service\FiltroService.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\model\Pedido.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\model\Detalle_Pedido.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\dao\CategoriaDao.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\controller\ProductoController.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\service\UserService.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\controller\DetallePedidoController.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\dao\PedidoDao.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\model\Configuracion.java
+C:\Users\User\Desktop\Proyecto en GITHUB\proyecto\Proyecto-Final-DanielMerino\TIENDA_DANIEL_MERINO_GARCIA\TIENDA_DANIEL_MERINO_GARCIA\src\main\java\com\java\tienda\dao\Detalle_PedidoDao.java
