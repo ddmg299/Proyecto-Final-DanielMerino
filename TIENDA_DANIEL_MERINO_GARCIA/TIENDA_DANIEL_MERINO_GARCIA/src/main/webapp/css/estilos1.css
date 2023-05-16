@@ -1,0 +1,25 @@
+/* html{ */
+/* 	background-color: red; */
+	
+/* } */
+
+
+.aviso{
+	color:red;
+}
+#cabecera{
+	display:flex;
+}
+
+#usuario{
+	padding-right:10px;
+}
+
+ main{
+ margin-bottom: 200px;
+ }
+ 
+ footer{
+ 	background-color:white;
+ }
+
