@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	Hola Mundoooo
+			
+			<table th:each="usuario : ${lista}">
+				<tr>
+					<td th:text="${usuario.email}"></td>
+					<!--<td th:text="${usuario.contraseña}"></td>-->
+					<td>borrar</td>
+				</tr>
+			</table>
+	<br><br>
+	
+</body>
+</html>
