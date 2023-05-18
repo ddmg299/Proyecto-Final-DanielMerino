@@ -37,12 +37,34 @@ public class CarritoController extends HttpServlet {
 		HashMap<Integer, Producto> carrito = (HashMap<Integer, Producto>) request.getSession().getAttribute("carrito");
 		
 		if(request.getParameter("cambio")!=null) {
+			//VIEJO
+			int cantidad= Integer.parseInt(request.getParameter("Cproducto"));
+			//NUEVO
+			int contadorP =  Integer.parseInt(request.getParameter("cantidad"));
+			
+			//CONTADOR DE LOS PRODUCTOS
+			int contadorC=(Integer)request.getSession(false).getAttribute("contadorC");
+			
+			if(contadorP>cantidad) {
+				System.out.println("NUEVO MAYOR QUE VIEJO");
+				contadorC= (contadorP-cantidad)+contadorC;
+				request.getSession(false).setAttribute("contadorC", contadorC);
+				
+				
+			}else if(cantidad>contadorP) {
+				System.out.println("VIEJO MAYOR QUE NUEVO");
+				contadorC= contadorC-(cantidad-contadorP);
+				request.getSession(false).setAttribute("contadorC", contadorC);
+			}
+			
+			
 			
 			carrito.get(Integer.parseInt(request.getParameter("productoId"))).setCantidad(Integer.parseInt(request.getParameter("cantidad")));
 		}else if(request.getParameter("eliminar")!=null) {
+			int cantidad= Integer.parseInt(request.getParameter("Cproducto"));
 			carrito.remove(Integer.parseInt(request.getParameter("productoId")));
 			int contadorC=(Integer)request.getSession(false).getAttribute("contadorC");
-			request.getSession(false).setAttribute("contadorC", contadorC-1);
+			request.getSession(false).setAttribute("contadorC", contadorC-cantidad);
 		}
 		
 		

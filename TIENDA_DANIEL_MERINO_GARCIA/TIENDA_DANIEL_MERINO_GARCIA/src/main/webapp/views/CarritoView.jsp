@@ -44,6 +44,7 @@
 								<td>
 									<form action="CarritoController" method="get">
 										<input type="hidden" name="productoId" value="<%=id%>">
+										<input type="hidden" name="Cproducto" value="<%=p.getCantidad()%>">
 										<input  type="number" name="cantidad" min="1" max="<%=p.getStock() %>" value="<%=p.getCantidad() %>">
 										<button class="link-button mt-2 mb-2" type="submit" name="cambio" value="Confirmar Cambio" >Confirmar Cambio</button>
 										<button class="link-button mt-2 mb-2" type="submit" name="eliminar" value="Eliminar Producto" >Eliminar Producto</button>
@@ -66,7 +67,7 @@
 		                <form action="UserController" method="get">
 		                <%if(carrito.size()==0){ %>
 		                	<input  type="hidden" name="dir" value="login">
-		                	<button  class="btn btn-outline-dark" type="submit" name="comprar" value="Comprar" disabled></button>
+		                	<button  class="btn btn-outline-dark" type="submit" name="comprar" value="Comprar" disabled>Comprar</button>
 		                <%}else{ %>
 		                	<input  type="hidden" name="dir" value="login">
 		                	<button  class="btn btn-outline-dark" type="submit" name="comprar" value="Comprar">Comprar</button>
