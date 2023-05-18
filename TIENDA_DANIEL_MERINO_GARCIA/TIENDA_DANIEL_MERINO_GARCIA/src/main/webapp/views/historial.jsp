@@ -71,8 +71,8 @@
 					<td><%=pedido.getNum_factura() %></td>
 					<td><%=pedido.getEstado() %></td>
 					<td><%=pedido.getTotal() %></td>
-					<td><a href="DetallePedidoController?id=<%=pedido.getId()%>">Ver Productos pedidos</a></td>
-					<td><a href="HistorialController?id=<%=pedido.getId()%>">Cancelar Pedido</a></td>
+					<td><a class="link-button" href="DetallePedidoController?id=<%=pedido.getId()%>">Ver Productos pedidos</a></td>
+					<td><a class="link-button" href="HistorialController?id=<%=pedido.getId()%>">Cancelar Pedido</a></td>
 				</tr>
 					
 				

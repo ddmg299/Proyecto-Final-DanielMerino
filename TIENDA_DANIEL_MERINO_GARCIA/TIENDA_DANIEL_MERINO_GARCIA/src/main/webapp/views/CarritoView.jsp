@@ -45,8 +45,8 @@
 									<form action="CarritoController" method="get">
 										<input type="hidden" name="productoId" value="<%=id%>">
 										<input  type="number" name="cantidad" min="1" max="<%=p.getStock() %>" value="<%=p.getCantidad() %>">
-										<input class="btn btn-outline-dark mt-2 mb-2" type="submit" name="cambio" value="Confirmar Cambio" >
-										<input class="btn btn-outline-dark mt-2 mb-2" type="submit" name="eliminar" value="Eliminar Producto" >
+										<button class="link-button mt-2 mb-2" type="submit" name="cambio" value="Confirmar Cambio" >Confirmar Cambio</button>
+										<button class="link-button mt-2 mb-2" type="submit" name="eliminar" value="Eliminar Producto" >Eliminar Producto</button>
 									</form>
 								</td>
 								<td><%= p.getCantidad()*p.getPrecio()%></td>
@@ -65,22 +65,97 @@
 			   		<%if(request.getSession(false).getAttribute("usuario")==null){ %>
 		                <form action="UserController" method="get">
 		                <%if(carrito.size()==0){ %>
-		                	<input type="hidden" name="dir" value="i">
-		                	<input class="btn btn-outline-dark" type="submit" name="comprar" value="Comprar" disabled>
+		                	<input  type="hidden" name="dir" value="login">
+		                	<button  class="btn btn-outline-dark" type="submit" name="comprar" value="Comprar" disabled></button>
 		                <%}else{ %>
-		                	<input type="hidden" name="dir" value="i">
-		                	<input class="btn btn-outline-dark" type="submit" name="comprar" value="Comprar">
+		                	<input  type="hidden" name="dir" value="login">
+		                	<button  class="btn btn-outline-dark" type="submit" name="comprar" value="Comprar">Comprar</button>
 		                <%} %>
 		                </form>
 	                <%}else{ %>
-				   		<form action="CompraController" method="get">
 				   		<%if(carrito.size()==0){ %>
-				   			<input class="btn btn-outline-dark" type="submit" name="comprar" value="Comprar" disabled>
-				   			<%}else{ %>
-				   			<input class="btn btn-outline-dark" type="submit" name="comprar" value="Comprar">
-				   			<%} %>
+				   		<form action="CompraController" method="get">
+				   			<button class="link-button" type="submit" name="comprar" value="Comprar" disabled>Comprar</button>
 				   		</form>
+				   			<%}else{ %>
+				   			
+				   			
+				   			
+				   				<%Usuario  user = (Usuario) request.getSession(false).getAttribute("usuario");%>
+								<div class="container">
+									<form action="CompraController" method="post">
+									
+										 <div class="mb-3">
+											<label for="nombre" class="form-label">Nombre:</label>
+											<input type="text" class="form-control" name="nombre" value="<%=user.getNombre()%>" required>
+										</div>
+										 
+										 <div class="mb-3">
+											<label for="apellidos" class="form-label">Apellidos:</label>
+											<input type="text" class="form-control" name="apellidos" value="<%=user.getApellidos()%>" required>
+										 </div>
+										 
+										 <div class="mb-3">
+											<label for="email" class="form-label">Email:</label>
+											<input type="text" class="form-control" name="email" value="<%=user.getEmail()%>" required>
+										</div>
+										
+										<div class="mb-3">
+											<label for="direccion" class="form-label">Dirección:</label>
+											<input type="text" class="form-control" name="direccion" value="" required>
+										</div>
+										 
+										 <div class="mb-3">
+											
+											<label for="pago" class="form-label">Método de pago:</label>
+											<select name="pago">
+											  <option value="defecto" selected>Elija un método de pago</option>
+											  <option value="paypal">PayPal</option>
+											  <option value="tarjeta">Tarjeta de credito</option>
+											</select>
+											<%if(request.getAttribute("pago")!=null){ %>
+												<% if(request.getAttribute("pago").equals(false)){%>
+													<span class="aviso"> No se ha elegido método de pago</span>
+												<%} %>
+											<%} %>			
+										</div>
+										<button type="submit" name="pagar" value="Pagar" class="link-button">Pagar</button>
+									</form>
+								</div>
+				   			
+<!-- 				   			<button class="link-button" type="submit" name="comprar" value="Comprar">Comprar</button> -->
+				   			<%} %>
+<!-- 				   		</form> -->
 	                <%} %>
+	                
+	                
+	                
+	                
+             
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
 			   		
 			      
 			  </div>	
@@ -88,8 +163,7 @@
 	</div>
 	</main>
 	
-<!-- 	<div class="container-fluid"> -->
-<!-- 	</div> -->
+
 	
 	
 	<%@include file="/fragments/Footer.jsp" %>

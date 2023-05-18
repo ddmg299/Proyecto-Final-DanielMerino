@@ -63,7 +63,7 @@
 					<div class="col-md-3 col-sm-12 d-flex justify-content-center text-center pb-2">
 
 							<div class="dropdown">
-								<button class="btn btn-secondary dropdown-toggle" type="button"
+								<button class="link-button dropdown-toggle" type="button"
 									id="dropdownMenuButton1" data-bs-toggle="dropdown"
 									aria-expanded="false">Categorias</button>
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -91,7 +91,7 @@
 
 					
 					<div class="col-md-3 col-sm-12  justify-content-center text-center">
-							<input class="btn btn-outline-dark" name="filtrar" type="submit" value="Filtrar">
+							<button class="link-button" name="filtrar" type="submit" value="Filtrar">Filtrar</button>
 					</div>
 
 				</form>
@@ -142,13 +142,13 @@
 												<%
 												if (producto.getStock() <= 0) {
 												%>
-												<input class="btn btn-outline-dark mt-2 mb-2" type="submit"
+												<input class="link-button" type="submit"
 													value="Añadir Al Carrito" disabled>
 												<%
 												} else {
 												%>
-												<input class="btn btn-outline-dark mt-2 mb-2" type="submit"
-													value="Añadir Al Carrito">
+												<button class="link-button" type="submit"
+													value="Añadir Al Carrito">Añadir Al Carrito</button>
 												<%
 												}
 												%>
