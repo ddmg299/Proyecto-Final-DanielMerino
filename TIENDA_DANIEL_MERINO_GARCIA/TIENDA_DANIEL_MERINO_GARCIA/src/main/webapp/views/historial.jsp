@@ -35,13 +35,7 @@
 					
 		</div>
 
-					
-		
-		
-		
-	
-	
-	
+
 		<div class="container-fluid">
 			<table class="table">
 				<thead>
