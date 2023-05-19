@@ -32,24 +32,24 @@ public class PedidoService{
 	public String generaNumFactura() {
 		
 		//Consigo la fecha de hoy
-		Date fecha= new Date();
-		SimpleDateFormat formatoFecha= new SimpleDateFormat("dd/MM/yy");
-		String num=formatoFecha.format(fecha);
-		//Consigo el ultimo numero de la factura
-		ConfiguracionDao cDao = new ConfiguracionDao();
-		Configuracion c = cDao.getNumFactura();
+//		Date fecha= new Date();
+//		SimpleDateFormat formatoFecha= new SimpleDateFormat("dd/MM/yy");
+//		String num=formatoFecha.format(fecha);
+//		//Consigo el ultimo numero de la factura
+//		ConfiguracionDao cDao = new ConfiguracionDao();
+//		Configuracion c = cDao.getNumFactura();
+//		
+//		String numF=num.concat("/00"+c.getValor());
+//		
+//		
+//		int numFactura= Integer.parseInt(c.getValor());
+//		numFactura+=1;
+//		c.setValor(Integer.toString(numFactura));
+//		
+//		cDao.updateNumFactura(c);
 		
-		String numF=num.concat("/00"+c.getValor());
 		
-		
-		int numFactura= Integer.parseInt(c.getValor());
-		numFactura+=1;
-		c.setValor(Integer.toString(numFactura));
-		
-		cDao.updateNumFactura(c);
-		
-		
-		return numF;
+		return "-";
 	}
 	
 	public void creaPedido(int uId,String metodo,String numF,double total) {

@@ -55,8 +55,9 @@ public class CompraController extends HttpServlet {
 		
 		//Si no se ha elegido un metodo de pago
 		if(metodo.equals("defecto")) {
+			System.out.println("DEFECTO");
 			request.setAttribute("pago",false);
-			request.getRequestDispatcher("views/CompraView.jsp").forward(request, response);
+			request.getRequestDispatcher("views/CarritoView.jsp").forward(request, response);
 		}else {
 			Usuario usuario=uDao.getByEmail(email); 
 			//String fecha= pService.generaNumFactura();

@@ -1,11 +1,13 @@
 package com.admin.service;
 
 import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.admin.model.Configuracion;
 import com.admin.model.Pedido;
 import com.admin.model.Usuario;
 import com.admin.repository.PedidoRepository;
@@ -16,6 +18,54 @@ public class PedidoService {
 	
 	@Autowired
 	private PedidoRepository pRep;
+	
+	@Autowired
+	private ConfiguracionService cSer;
+	
+	@Autowired 
+	private MailService mSer;
+	
+	@Autowired 
+	private PdfService pdfSer;
+	
+	
+	
+	
+	
+	//NÚMEROS DE FACTURA
+	public String getNumFactura() {
+		
+		
+		
+		//Consigo la fecha de hoy
+		Date fecha= new Date();
+		SimpleDateFormat formatoFecha= new SimpleDateFormat("dd/MM/yy");
+		String num=formatoFecha.format(fecha);
+		//Consigo el ultimo numero de la factura
+		Configuracion c= cSer.getConfiguracion("Número Factura");
+		
+		
+		String numF=num.concat("/00"+c.getValor());
+		
+		
+		
+		
+		
+		int numFactura= Integer.parseInt(c.getValor());
+		numFactura+=1;
+		c.setValor(Integer.toString(numFactura));
+		
+		cSer.updtConfiguracion(c.getClave(),c.getValor());
+		
+		
+		return numF;
+		
+		
+	}
+	
+	
+	
+	
 	
 	
 	//AÑADIR
@@ -49,12 +99,19 @@ public class PedidoService {
 		Pedido p = getPedido(id);
 		p.setId(id);
 		p.setEstado("E");
+		p.setNumFactura(getNumFactura());
 		pRep.save(p);
+		String asunto= "Pedido:"+p.getNumFactura();
+		String cuerpo= "Le enviamos adjunta la factura de su pedido. \n\n Gracias por comprar en nuestra tienda";
+		
+		pdfSer.creafactura();
+		//mSer.enviarEmail("danielmeringar@gmail.com",asunto ,cuerpo);
+		
 		
 	}
 	
 	
-	//ENVIAR PEDIDO
+	//CANCELAR PEDIDO
 	public void cancelarPedido(int id) {
 		Pedido p = getPedido(id);
 		p.setId(id);
