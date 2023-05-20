@@ -54,4 +54,10 @@ public class DetalleService {
 	public List<Detalle> getDetalle(){
 		return dRep.findAll();
 	}
+	
+	
+	//LISTAR POR ID DE PEDIDO
+	public List<Detalle> getDetalleByPedidoId(int pedido_id){
+		return dRep.listByPedidoId(pedido_id);
+	}
 }

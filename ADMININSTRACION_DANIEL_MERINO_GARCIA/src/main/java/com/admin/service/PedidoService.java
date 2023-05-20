@@ -104,8 +104,8 @@ public class PedidoService {
 		String asunto= "Pedido:"+p.getNumFactura();
 		String cuerpo= "Le enviamos adjunta la factura de su pedido. \n\n Gracias por comprar en nuestra tienda";
 		
-		pdfSer.creafactura();
-		//mSer.enviarEmail("danielmeringar@gmail.com",asunto ,cuerpo);
+		pdfSer.creafactura(p);
+		mSer.enviarEmail("danielmeringar@gmail.com",asunto ,cuerpo,p);
 		
 		
 	}
