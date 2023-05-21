@@ -1,5 +1,7 @@
 package com.admin.model;
 
+import java.text.DecimalFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -38,4 +40,18 @@ public class Detalle {
     private double total;
 
     // Constructor, getters, and setters
+    
+    public String getPrecioFormateado() {
+    	DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+        String valorFormateado = decimalFormat.format(this.precioUnitario);
+        return valorFormateado;
+    
+    }
+    
+    public String getTotalFormateado() {
+    	DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+        String valorFormateado = decimalFormat.format(this.total);
+        return valorFormateado;
+
+    }
 }

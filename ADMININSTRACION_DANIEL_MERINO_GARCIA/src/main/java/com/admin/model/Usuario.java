@@ -39,6 +39,18 @@ public class Usuario {
     @Column(name = "baja")
     private boolean baja;
     
+    
+    
+    public Usuario(Rol rol,String email,String clave,String nombre,String apellidos,boolean baja) {
+    	this.rol=rol;
+    	this.email=email;
+    	this.clave=clave;
+    	this.nombre=nombre;
+    	this.apellidos=apellidos;
+    	this.baja=baja;
+    	
+    }
+    
     public static String encriptarPass(String pass) {
 		StandardPBEStringEncryptor s = new StandardPBEStringEncryptor(); 
 		s.setPassword("contrasena");

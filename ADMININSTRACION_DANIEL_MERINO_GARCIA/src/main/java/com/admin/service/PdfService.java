@@ -93,7 +93,7 @@ public class PdfService {
 	            
 	           Paragraph p1 = new Paragraph("Nombre:"+pedido.getUsuario().getNombre()+"\t Apellidos:"+pedido.getUsuario().getApellidos());
 	           Paragraph p2 = new Paragraph("Fecha del pedido "+ pedido.getFecha());
-	           Paragraph p3 = new Paragraph("Total del pedido:"+pedido.getTotal()+"€");
+	           Paragraph p3 = new Paragraph("Total del pedido:"+pedido.getTotalFormateado()+"€");
 	            p1.setIndentationLeft(40);
 	            p2.setIndentationLeft(40);
 	            p3.setIndentationLeft(40);
@@ -133,9 +133,9 @@ public class PdfService {
 					System.out.println(detalle.getUnidades());
 					
 					tablaDetalle.addCell(new PdfPCell(new Phrase(detalle.getProducto().getNombre())));
-					tablaDetalle.addCell(new PdfPCell(new Phrase(Double. toString(detalle.getPrecioUnitario())+"€")));
+					tablaDetalle.addCell(new PdfPCell(new Phrase(detalle.getPrecioFormateado()+"€")));
 					tablaDetalle.addCell(new PdfPCell(new Phrase(Integer.toString(detalle.getUnidades()))));
-					tablaDetalle.addCell(new PdfPCell(new Phrase(Double. toString(detalle.getTotal())+"€")));
+					tablaDetalle.addCell(new PdfPCell(new Phrase(detalle.getTotalFormateado()+"€")));
 					
 				}
 				

@@ -1,5 +1,7 @@
 package com.admin.model;
 
+import java.text.DecimalFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -43,4 +45,28 @@ public class Producto {
     private Categoria categoria;
 
     // Constructor, getters, and setters
+    
+    
+    public String getPrecioFormateado() {
+    	DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+        String valorFormateado = decimalFormat.format(this.precio);
+        return valorFormateado;
+
+    }
+    
+//    public Double precioFormateadoDouble() {
+//    	DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+//        String valorFormateado = decimalFormat.format(this.precio);
+//        return valorFormateado;
+//
+//    }
+    
+    public String getImpuestoFormateado() {
+    	DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+        String valorFormateado = decimalFormat.format(this.impuesto);
+        return valorFormateado;
+
+    }
+    
+    
 }

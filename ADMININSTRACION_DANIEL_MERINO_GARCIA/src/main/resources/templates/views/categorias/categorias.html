@@ -48,12 +48,11 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Tables</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Tables</li>
-                        </ol>
-                       
+                        <h1 class="mt-4">Categorias</h1>
+                        
+                       <div th:if="${rol==3}">
+                        	<a class="link-button mb-3" th:href="@{/Categoria/NuevaCategoria}">Añadir Categoria</a>
+                        </div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -82,9 +81,9 @@
                                             <td th:if="${categoria.baja==true}" th:text="Si"></td>
                                             <td>
 												
-												<a th:if="${categoria.baja==false}" th:href="@{/Home}">Dar de Baja</a>
-	                                            <a th:if="${rol==3 && categoria.baja==true}" th:href="@{/Home}">Dar de Alta</a>
-	                                            <a  th:if="${categoria.baja==false}" th:href="@{/Home}">Editar</a>
+												<a th:if="${categoria.baja==false}" class="link-button" th:href="@{/Categoria/BajaCategoria} + '?id=' + ${categoria.id}">Dar de Baja</a>
+	                                            <a th:if="${rol==3 && categoria.baja==true}" class="link-button" th:href="@{/Categoria/AltaCategoria} + '?id=' + ${categoria.id}">Dar de Alta</a>
+<!--	                                            <a  th:if="${categoria.baja==false}" class="link-button" th:href="@{/Home}">Editar</a>-->
 	                                            
 											</td>
                                         </tr>

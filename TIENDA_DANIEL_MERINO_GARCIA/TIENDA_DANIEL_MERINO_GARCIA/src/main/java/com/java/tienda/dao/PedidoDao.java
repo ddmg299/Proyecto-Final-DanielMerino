@@ -197,6 +197,7 @@ public class PedidoDao implements DAO<Pedido>{
                 int id = rs.getInt("id");
                 int usuario_id = rs.getInt("usuario_id");
                 Timestamp fecha = rs.getTimestamp("fecha");
+                System.out.println("Fecha en dao"+fecha);
                 String metodo_pago= rs.getString("metodopago");
                 String num_factura= rs.getString("numfactura");
                 String estado= rs.getString("estado");

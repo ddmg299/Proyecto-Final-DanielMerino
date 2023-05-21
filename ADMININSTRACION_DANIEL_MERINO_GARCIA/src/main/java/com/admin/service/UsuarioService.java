@@ -40,7 +40,7 @@ public class UsuarioService {
 		u.setId(id);
 		u.setRol(rol);
 		u.setEmail(email);
-		u.setClave(clave);
+		u.setClave(Usuario.encriptarPass(clave));
 		u.setNombre(nombre);
 		u.setApellidos(apellidos);
 		u.setBaja(baja);
@@ -89,7 +89,7 @@ public class UsuarioService {
 	}
 		
 		
-	//Dar de baja usuario
+	//Dar de alta usuario
 	public void altaUser(int id){
 		Usuario u = getUsuario(id);
 		

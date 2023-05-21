@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.admin.model.Categoria;
+
 import com.admin.repository.CategoriaRepository;
 @Service
 public class CategoriaService {
@@ -50,5 +51,22 @@ public class CategoriaService {
 	public List<Categoria> getCategorias(){
 		return cRep.findAll();
 	}
-
+	
+	
+	//Dar de baja categoria
+		public void bajaCategoria(int id){
+			Categoria u = getCategoria(id);
+			
+			u.setBaja(true);
+			cRep.save(u);
+		}
+			
+			
+	//Dar de alta usuario
+	public void altaCategoria(int id){
+		Categoria u = getCategoria(id);
+		
+		u.setBaja(false);
+		cRep.save(u);
+	}
 }

@@ -1,6 +1,7 @@
 package com.admin.service;
 
 import java.util.Date;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -80,7 +81,7 @@ public class PedidoService {
 	}
 	
 	//ACTUALIZAR PEDIDO
-	public void updtPedido(int id,Usuario user,Date fecha,String metodopago,String numfactura,String estado,double total) {
+	public void updtPedido(int id,Usuario user,Timestamp fecha,String metodopago,String numfactura,String estado,double total) {
 		Pedido p = getPedido(id);
 		p.setId(id);
 		p.setUsuario(user);

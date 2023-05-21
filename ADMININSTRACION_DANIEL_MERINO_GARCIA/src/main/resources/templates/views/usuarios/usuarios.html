@@ -40,20 +40,14 @@
 						</a>
 					</div>
 				</div>
-				<div class="sb-sidenav-footer">
-					<div class="small">Logged in as:</div>
-					Start Bootstrap
-				</div>
+
 			</nav>
 		</div>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Tables</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Tables</li>
-                        </ol>
+                        <h1 class="mt-4 mb-4">Usuarios</h1>
+                        
 <!--                         <div class="card mb-4"> -->
 <!--                             <div class="card-body"> -->
 <!--                                 DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the -->
@@ -97,11 +91,11 @@
                                             <td th:if="${usuario.baja==false}" th:text="No"></td>
                                             <td th:if="${usuario.baja==true}" th:text="Si"></td>
                                             <td>
-                                            	<a th:if="${ usuario.baja==true}" th:href="@{/User/AltaUsuario} + '?id=' + ${usuario.id}">Dar de Alta</a>
+                                            	<a th:if="${ usuario.baja==true}" th:href="@{/User/AltaUsuario} + '?id=' + ${usuario.id}" class="link-button mb-3">Dar de Alta</a>
                                             	
 <!-- 	                                            <a th:if="${rol==2 && usuario.baja==false}" href="#">Dar de Alta</a> -->
-	                                            <a th:if="${rol==3 && usuario.baja==false}"  th:href="@{/User/BajaUsuario} + '?id=' + ${usuario.id}">Dar de Baja</a>
-                                            	<a th:href="@{/User/EditarUsuario} + '?id=' + ${usuario.id}">Editar</a>
+	                                            <a th:if="${rol==3 && usuario.baja==false}"  th:href="@{/User/BajaUsuario} + '?id=' + ${usuario.id}" class="link-button mb-3">Dar de Baja</a>
+                                            	<a th:href="@{/User/EditarUsuario} + '?id=' + ${usuario.id}" class="link-button mb-3">Editar</a>
                                             </td>
                                         </tr>
                                         
@@ -112,7 +106,7 @@
                         
                         
                         <div th:if="${rol==3}">
-                        
+                        <a class="link-button mb-3" th:href="@{/User/NuevoUsuario}">Añadir Empleado</a>
 	                        <div class="card mb-4">
 	                            <div class="card-header">
 	                                <i class="fas fa-table me-1"></i>
@@ -151,9 +145,9 @@
 	                                            <td>
 	                                            
 	                                            
-	                                            <a th:if="${usuario.baja==false}" th:href="@{/User/BajaUsuario} + '?id=' + ${usuario.id}">Dar de Baja</a>
-	                                            <a th:if="${usuario.baja==true}" th:href="@{/User/AltaUsuario} + '?id=' + ${usuario.id}">Dar de Alta</a>
-	                                            <a th:href="@{/User/EditarUsuario} + '?id=' + ${usuario.id}">Editar</a>
+	                                            <a th:if="${usuario.baja==false}" class="link-button mb-3" th:href="@{/User/BajaUsuario} + '?id=' + ${usuario.id}">Dar de Baja</a>
+	                                            <a th:if="${usuario.baja==true}" class="link-button mb-3" th:href="@{/User/AltaUsuario} + '?id=' + ${usuario.id}">Dar de Alta</a>
+	                                            <a th:href="@{/User/EditarUsuario} + '?id=' + ${usuario.id}" class="link-button mb-3">Editar</a>
 	                                            </td>
 	                                        </tr>
 	                                        

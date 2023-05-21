@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.admin.model.Rol;
 import com.admin.model.Usuario;
+import com.admin.service.RolService;
 import com.admin.service.UsuarioService;
 
 @Controller
@@ -19,16 +21,14 @@ public class UserController {
 	
 	@Autowired
 	private UsuarioService uServ;
+	@Autowired
+	private RolService rServ;
 	
 	
 	@GetMapping("NuevoUsuario")
 	public String newUser() {
 		return "/views/usuarios/register";
 	}
-	
-	
-	
-	
 	
 	//Dar de baja a un usuario
 	@GetMapping("BajaUsuario")
@@ -38,7 +38,6 @@ public class UserController {
 		 return "redirect:/Home/Usuarios";
 	}
 	
-	
 	//Dar de alta a un usuario
 	@GetMapping("AltaUsuario")
 	public String altaUser(Model model,@RequestParam String id) {
@@ -47,16 +46,78 @@ public class UserController {
 		 return "redirect:/Home/Usuarios";
 	}
 	
-	
-	
 	//Editar usuario
 	@GetMapping("EditarUsuario")
 	public String editUser(Model model, @RequestParam String id) {
-		//Usuario u = uServ.getUsuario(id);
-		model.addAttribute("id",id);
+		Usuario u = uServ.getUsuario(Integer.parseInt(id));
+		model.addAttribute("usuario",u);
 		
 		return "/views/usuarios/editUser";
 	}
+	
+	
+	//AÑADIR USUARIO
+	@PostMapping("AddUser")
+	public String addUser(Model model, @RequestParam String nombre, String apellidos, String email, String clave,String clave2) {
+		
+		
+		//Si es nulo el correo no esta en la Base de datos
+		if(uServ.getEmpleadosByEmail(email)==null) {
+			System.out.println("ENtra 1");
+			//Si las claves coinciden, entonces se crea el usuario
+			if(clave.equals(clave2)) {
+				System.out.println("ENtra 2");	
+				Rol rol = rServ.getRol(2);
+				Usuario user = new Usuario(rol,email,Usuario.encriptarPass(clave2),nombre,apellidos,false);
+				uServ.addUsuario(user);
+				return "redirect:/Home/Usuarios"; 
+			}else {
+				model.addAttribute("valores", "clave");
+				return "/views/usuarios/register";
+			}	
+		}else {
+			model.addAttribute("valores", "email");
+			return "/views/usuarios/register";
+		}	
+	}
+	
+	
+	
+	
+	//AÑADIR USUARIO
+		@PostMapping("EditUser")
+		public String editUser(Model model, @RequestParam String id, String nombre, String apellidos, String email, String clave,String clave2) {
+			
+			Usuario u = uServ.getUsuario(Integer.parseInt(id));
+			//Si es nulo el correo no esta en la Base de datos
+			if(uServ.getEmpleadosByEmail(email)==null) {
+				System.out.println("ENtra 1");
+				//Si las claves coinciden, entonces se crea el usuario
+				if(clave.equals(clave2)) {
+					
+					if(Usuario.desencriptarPass(u.getClave()).equals(clave2)) {
+						
+						System.out.println("ENtra 2");	
+						
+						uServ.updtUsuario(Integer.parseInt(id), u.getRol(), email, clave2, nombre, apellidos, false);
+					
+						return "redirect:/Home/Usuarios"; 
+					}else {
+						model.addAttribute("usuario",u);
+						model.addAttribute("valores", "clave");
+						return "/views/usuarios/register";
+					}
+				}else {
+					model.addAttribute("usuario",u);
+					model.addAttribute("valores", "clave");
+					return "/views/usuarios/editUser";
+				}	
+			}else {
+				model.addAttribute("usuario",u);
+				model.addAttribute("valores", "email");
+				return "/views/usuarios/editUser";
+			}	
+		}
 	
 	
 	
