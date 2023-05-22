@@ -57,6 +57,18 @@ public class HomeController {
 	}
 	
 	
+	@GetMapping("/LogOut")
+	public String logOut(Model model,HttpSession sesion) {
+		if(sesion!=null) {
+			sesion.invalidate();
+			return "redirect:/";
+		}else {
+			return "/views/home";			
+			
+		}
+	}
+	
+	
 	
 	@GetMapping("/Usuarios")
 	public String goUsuarios(Model model,HttpSession sesion) {
