@@ -57,10 +57,10 @@ public class ProductoController {
 	@PostMapping("AddProducto")
 	public String addProducto(Model model, @RequestParam String nombre, String descripcion, String precio,String stock,String categoria) {
 		
-		if(nombre!=null) {				
-			if(descripcion!=null) {					
-				if(precio!=null) {						
-					if(stock!=null) {
+		if(nombre.isEmpty()==false) {				
+			if(descripcion.isEmpty()==false) {					
+				if(precio.isEmpty()==false) {						
+					if(stock.isEmpty()==false) {
 						Producto p = new Producto();
 						p.setNombre(nombre);
 						p.setDescripcion(descripcion);
@@ -95,10 +95,10 @@ public class ProductoController {
 		@PostMapping("EditProducto")
 		public String editProducto(Model model, @RequestParam String id, String nombre, String descripcion, String precio,String stock,String categoria) {
 			
-			if(nombre!=null) {				
-				if(descripcion!=null) {					
-					if(precio!=null) {						
-						if(stock!=null) {
+			if(nombre.isEmpty()==false) {				
+				if(descripcion.isEmpty()==false) {					
+					if(precio.isEmpty()==false) {						
+						if(stock.isEmpty()==false) {
 							Categoria c = cServ.getCategoria(Integer.parseInt(categoria));
 							
 							pServ.updtProducto(Integer.parseInt(id), nombre, descripcion, Double.parseDouble(precio), 0.21, Integer.parseInt(stock), false, null,c );
