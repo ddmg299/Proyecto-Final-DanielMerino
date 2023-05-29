@@ -13,6 +13,8 @@ import com.admin.model.Usuario;
 import com.admin.service.RolService;
 import com.admin.service.UsuarioService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/User")
 public class UserController {
@@ -26,7 +28,7 @@ public class UserController {
 	
 	
 	@GetMapping("NuevoUsuario")
-	public String newUser() {
+	public String newUser(HttpSession sesion) {
 		return "/views/usuarios/register";
 	}
 	
@@ -48,7 +50,7 @@ public class UserController {
 	
 	//Editar usuario
 	@GetMapping("EditarUsuario")
-	public String editUser(Model model, @RequestParam String id) {
+	public String editUser(Model model, @RequestParam String id,HttpSession sesion) {
 		Usuario u = uServ.getUsuario(Integer.parseInt(id));
 		model.addAttribute("usuario",u);
 		
@@ -62,23 +64,57 @@ public class UserController {
 		
 		
 		//Si es nulo el correo no esta en la Base de datos
-		if(uServ.getEmpleadosByEmail(email)==null) {
-			System.out.println("ENtra 1");
-			//Si las claves coinciden, entonces se crea el usuario
-			if(clave.equals(clave2)) {
-				System.out.println("ENtra 2");	
-				Rol rol = rServ.getRol(2);
-				Usuario user = new Usuario(rol,email,Usuario.encriptarPass(clave2),nombre,apellidos,false);
-				uServ.addUsuario(user);
-				return "redirect:/Home/Usuarios"; 
+		//SI el email no esta vacio
+		if(email.isEmpty()==false) {
+			//Si el nombre no esta vacio
+			if(nombre.isEmpty()==false) {
+				
+				//Si el apellido no esta vacio
+				if(apellidos.isEmpty()==false) {
+					//SI las claves no estan vacias
+					
+					if((clave.isEmpty()==false)&&(clave2.isEmpty()==false)) {
+				
+							
+							if(uServ.getEmpleadosByEmail(email)==null) {
+								System.out.println("ENtra 1");
+								//Si las claves coinciden, entonces se crea el usuario
+								
+								if(clave.equals(clave2)) {
+									System.out.println("ENtra 2");	
+									Rol rol = rServ.getRol(2);
+									Usuario user = new Usuario(rol,email,Usuario.encriptarPass(clave2),nombre,apellidos,false);
+									uServ.addUsuario(user);
+									return "redirect:/Home/Usuarios"; 
+								}else {
+									model.addAttribute("valores", "clave");
+									return "/views/usuarios/register";
+								}
+								
+							}else {
+								model.addAttribute("valores", "email");
+								return "/views/usuarios/register";
+							}
+							
+						
+					}else {
+						model.addAttribute("valores", "claves1");
+						return "/views/usuarios/register";
+						
+					}
+				}else {
+					model.addAttribute("valores", "ape");
+					return "/views/usuarios/register";
+				}
 			}else {
-				model.addAttribute("valores", "clave");
+				model.addAttribute("valores", "nombre");
 				return "/views/usuarios/register";
-			}	
+			}
 		}else {
-			model.addAttribute("valores", "email");
+			model.addAttribute("valores", "email2");
 			return "/views/usuarios/register";
-		}	
+		}
+			
 	}
 	
 	
@@ -90,28 +126,36 @@ public class UserController {
 			
 			Usuario u = uServ.getUsuario(Integer.parseInt(id));
 			//Si es nulo el correo no esta en la Base de datos
-			if(uServ.getEmpleadosByEmail(email)==null) {
+			if((uServ.getEmpleadosByEmail(email)==null)||(u.getEmail().equals(email))) {
 				System.out.println("ENtra 1");
 				//Si las claves coinciden, entonces se crea el usuario
-				if(clave.equals(clave2)) {
-					
-					if(Usuario.desencriptarPass(u.getClave()).equals(clave2)) {
+				if((clave.isEmpty()==false)&&(clave2.isEmpty()==false)) {
+					if(clave.equals(clave2)) {
 						
-						System.out.println("ENtra 2");	
+						if(Usuario.desencriptarPass(u.getClave()).equals(clave2)) {
+							
+							System.out.println("ENtra 2");	
+							
+							uServ.updtUsuario(Integer.parseInt(id), u.getRol(), email, clave2, nombre, apellidos, false);
 						
-						uServ.updtUsuario(Integer.parseInt(id), u.getRol(), email, clave2, nombre, apellidos, false);
-					
-						return "redirect:/Home/Usuarios"; 
+							return "redirect:/Home/Usuarios"; 
+						}else {
+							model.addAttribute("usuario",u);
+							model.addAttribute("valores", "clave");
+							return "/views/usuarios/editUser";
+						}
 					}else {
 						model.addAttribute("usuario",u);
 						model.addAttribute("valores", "clave");
-						return "/views/usuarios/register";
+						return "/views/usuarios/editUser";
 					}
+					
 				}else {
 					model.addAttribute("usuario",u);
 					model.addAttribute("valores", "clave");
 					return "/views/usuarios/editUser";
-				}	
+				}
+					
 			}else {
 				model.addAttribute("usuario",u);
 				model.addAttribute("valores", "email");

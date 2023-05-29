@@ -82,7 +82,7 @@ private Connection con;
 		try {
 			//System.out.println("CREO LA CONEXION");
 			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from producto");
+			ResultSet rs = stmt.executeQuery("select * from producto where baja='0'");
 			
 			while (rs.next()) {
                 int id = rs.getInt("id");

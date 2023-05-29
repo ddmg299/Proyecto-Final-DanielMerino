@@ -34,6 +34,12 @@ public class Producto implements Serializable{
 		this.categoria_id=categoria_id;
 	}
 	
+	
+	
+	
+	
+	
+	
 	public int getCantidad() {
 		return cantidad;
 	}

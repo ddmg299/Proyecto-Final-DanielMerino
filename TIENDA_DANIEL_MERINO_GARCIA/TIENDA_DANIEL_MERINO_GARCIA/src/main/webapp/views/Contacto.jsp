@@ -48,7 +48,7 @@
 			    	<textarea name="textarea"  class="form-control" id="consulta" rows="10" cols="50"></textarea>
 
 			</div>
-			  <button type="submit" class="btn btn-primary">Enviar</button>
+			  <button type="submit" class="link-button">Enviar</button>
 		</form>
 		
 			

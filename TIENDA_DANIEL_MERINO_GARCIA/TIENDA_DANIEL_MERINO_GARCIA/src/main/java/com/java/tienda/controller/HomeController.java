@@ -110,7 +110,7 @@ public class HomeController extends HttpServlet {
 			
 			FiltroService  fService= new FiltroService();
 			
-			ArrayList<Producto> productos= fService.filtroHome(precioo, populares, idCategoria);
+			ArrayList<Producto> productos= fService.filtroHome(precioo,idCategoria);
 			//Cojo las categorias de la BBDD
 			CategoriaDao cdao= new CategoriaDao();
 			ArrayList<Categoria> categorias = cdao.getAll();

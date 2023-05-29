@@ -41,7 +41,7 @@ public class CategoriaDao implements DAO<Categoria>{
 		try {
 			//System.out.println("CREO LA CONEXION");
 			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from categoria");
+			ResultSet rs = stmt.executeQuery("select * from categoria where baja='0'");
 			
 			while (rs.next()) {
                 int id = rs.getInt("id");

@@ -1,6 +1,7 @@
 package com.java.tienda.model;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 
 public class Detalle_Pedido implements Serializable{
 	/**
@@ -30,6 +31,17 @@ public class Detalle_Pedido implements Serializable{
 		this.total=total;
 	}
 
+	public String formatImpuesto() {
+        DecimalFormat format = new DecimalFormat("#0.00");
+        return format.format(this.impuesto);
+    }
+	public String formatTotal() {
+        DecimalFormat format = new DecimalFormat("#0.00");
+        return format.format(this.total);
+    }
+	
+	
+	
 	public int getId() {
 		return id;
 	}

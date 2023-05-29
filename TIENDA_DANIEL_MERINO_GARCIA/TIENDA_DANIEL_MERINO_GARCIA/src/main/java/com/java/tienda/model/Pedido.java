@@ -2,6 +2,7 @@ package com.java.tienda.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.util.Date;
 
 
@@ -34,7 +35,10 @@ public class Pedido  implements Serializable{
 		this.total=total;
 	}
 	
-	
+	public String formatTotal() {
+        DecimalFormat format = new DecimalFormat("#0.00");
+        return format.format(this.total);
+    }
 	
 	public int getId() {
 		return id;

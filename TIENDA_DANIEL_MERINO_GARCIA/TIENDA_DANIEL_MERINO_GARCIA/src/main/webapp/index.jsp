@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.java.tienda.model.Producto"%>
 <%@ page import="com.java.tienda.model.Categoria"%>
@@ -26,44 +26,37 @@
 	<main>
 
 		<div class="container" id="filtros">
-			<div >
+			<div class="border"  >
 				<form action="" method="post" class="row ">
 
-					<div class="col-md-3 col-sm-12 d-flex justify-content-center pb-2" >
+					<div class="col-md-4 col-sm-12 d-flex justify-content-center pb-2 border-end" >
 
 						<div id="precio" class="" >
 							<div class="form-check form-switch ">
-								<input class="form-check-input" name="p" value="0-20" type="radio" id="flexSwitchCheckDefault">
-								<label class="form-check-label" for="flexSwitchCheckDefault">0-20</label>
+								<input class="form-check-input" name="p" value="0-5" type="radio" id="flexSwitchCheckDefault">
+								<label class="form-check-label" for="flexSwitchCheckDefault">0-5‚Ç¨</label>
 							</div>	
 							<div class="form-check form-switch ">
-								<input class="form-check-input" name="p" value="21-50"  type="radio" id="flexSwitchCheckDefault">
-								<label class="form-check-label" for="flexSwitchCheckDefault">20-50</label>
+								<input class="form-check-input" name="p" value="6-10"  type="radio" id="flexSwitchCheckDefault">
+								<label class="form-check-label" for="flexSwitchCheckDefault">5-10‚Ç¨</label>
 							</div>
 								
 							<div class="form-check form-switch ">
-								<input class="form-check-input" name="p" value="51" type="radio" id="flexSwitchCheckDefault">
-								<label class="form-check-label" for="flexSwitchCheckDefault">50 o m·s</label>
+								<input class="form-check-input" name="p" value="11" type="radio" id="flexSwitchCheckDefault">
+								<label class="form-check-label" for="flexSwitchCheckDefault">10‚Ç¨ o m√°s</label>
 							
 							</div>
 							
 						</div>
 
 					</div>
-									
-					<div class="col-md-3 col-sm-12 d-flex justify-content-center pt-1 pb-2">
-				
-							<div class="form-check form-switch ">
-								<input class="form-check-input" name="populares" type="checkbox" id="flexSwitchCheckDefault">
-									<label class="form-check-label" for="flexSwitchCheckDefault">M·s Comprados</label>
-							</div>
-						
-					</div>
+													
+					
 
-					<div class="col-md-3 col-sm-12 d-flex justify-content-center text-center pb-2">
+					<div class="col-md-4 col-sm-12 d-flex justify-content-center text-center pb-2 pt-3 border-end">
 
 							<div class="dropdown">
-								<button class="link-button dropdown-toggle" type="button"
+								<button class="link-filtro dropdown-toggle" type="button"
 									id="dropdownMenuButton1" data-bs-toggle="dropdown"
 									aria-expanded="false">Categorias</button>
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -90,7 +83,7 @@
 					</div>
 
 					
-					<div class="col-md-3 col-sm-12  justify-content-center text-center">
+					<div class="col-md-4 col-sm-12  justify-content-center text-center pt-3">
 							<button class="link-button" name="filtrar" type="submit" value="Filtrar">Filtrar</button>
 					</div>
 
@@ -117,17 +110,18 @@
 						<a class="text-decoration-none "
 							href="ProductoController?id=<%=producto.getId()%>">
 							<div class="card shadow-sm">
-								<svg class="bd-placeholder-img card-img-top" width="100%"
-									height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-									aria-label="Placeholder: Thumbnail"
-									preserveAspectRatio="xMidYMid slice" focusable="false">
+<!-- 								<svg class="bd-placeholder-img card-img-top" width="100%" -->
+<!-- 									height="225" xmlns="http://www.w3.org/2000/svg" role="img" -->
+<!-- 									aria-label="Placeholder: Thumbnail" -->
+<!-- 									preserveAspectRatio="xMidYMid slice" focusable="false"> -->
 									
-									<title>Placeholder</title><rect width="100%" height="100%"
-										fill="#55595c"></rect>
-									<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
+<!-- 									<title>Placeholder</title><rect width="100%" height="100%" -->
+<!-- 										fill="#55595c"></rect> -->
+<!-- 									<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
+								<img alt="" width="150px" height="200px" style="margin:auto" src="img/<%=producto.getFoto()%>.jpg">
 								<div class="card-body">
-									<p class="card-text"><%=producto.getNombre()%>
+									<p class="card-text"><%=producto.getNombre()%><br>
+									<%=producto.getPrecio()%>‚Ç¨
 									</p>
 									<div class="d-flex justify-content-between align-items-center">
 
@@ -143,12 +137,12 @@
 												if (producto.getStock() <= 0) {
 												%>
 												<input class="link-button" type="submit"
-													value="AÒadir Al Carrito" disabled>
+													value="A√±adir Al Carrito" disabled>
 												<%
 												} else {
 												%>
 												<button class="link-button" type="submit"
-													value="AÒadir Al Carrito">AÒadir Al Carrito</button>
+													value="A√±adir Al Carrito">A√±adir Al Carrito</button>
 												<%
 												}
 												%>

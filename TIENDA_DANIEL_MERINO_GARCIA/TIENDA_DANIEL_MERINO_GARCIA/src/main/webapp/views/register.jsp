@@ -37,7 +37,7 @@
 	      <label for="password" class="form-label">Confirma Contraseña</label>
 	      <input type="password" class="form-control" id="passwordC" name="passwordC" required>
 	    </div>
-	    <button type="submit" name="register" value="register" class="btn btn-primary">Registrarse</button>
+	    <button type="submit" name="register" value="register" class="link-button">Registrarse</button>
 	  </form>
 	  
 		<%if(request.getAttribute("registered")!=null) {%>

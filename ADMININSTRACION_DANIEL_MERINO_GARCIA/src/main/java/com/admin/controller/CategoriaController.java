@@ -13,6 +13,8 @@ import com.admin.model.Rol;
 import com.admin.model.Usuario;
 import com.admin.service.CategoriaService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/Categoria")
 public class CategoriaController {
@@ -54,7 +56,7 @@ public class CategoriaController {
 	
 	//AÑADIR USUARIO
 		@PostMapping("AddCategoria")
-		public String addUser(Model model, @RequestParam String nombre) {
+		public String addUser(Model model, @RequestParam String nombre,HttpSession sesion) {
 			
 			if(nombre!="null") {
 				Categoria c= new Categoria();

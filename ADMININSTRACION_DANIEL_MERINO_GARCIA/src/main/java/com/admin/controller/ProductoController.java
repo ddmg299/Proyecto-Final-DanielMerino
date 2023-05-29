@@ -16,6 +16,8 @@ import com.admin.model.Categoria;
 import com.admin.model.Producto;
 import com.admin.service.CategoriaService;
 import com.admin.service.ProductoService;
+
+import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/Producto")
 public class ProductoController {
@@ -28,7 +30,7 @@ public class ProductoController {
 	
 	
 	@GetMapping("NuevoProducto")
-	public String newProducto(Model model) {
+	public String newProducto(Model model,HttpSession sesion) {
 		
 		List<Categoria> categorias= cServ.getCategorias();
 		model.addAttribute("categorias", categorias);
@@ -36,7 +38,7 @@ public class ProductoController {
 	}
 	
 	@GetMapping("EditarProducto")
-	public String editarProducto(Model model, @RequestParam String id) {
+	public String editarProducto(Model model, @RequestParam String id,HttpSession sesion) {
 		Producto producto = pServ.getProducto(Integer.parseInt(id));
 		String precio= producto.getPrecioFormateado().replace(",",".");
 		Double precioF= Double.parseDouble(precio);
@@ -49,6 +51,28 @@ public class ProductoController {
 	}
 	
 	
+	//Dar de baja a un usuario
+		@GetMapping("BajaProducto")
+		public String bajaUser(Model model,@RequestParam String id) {
+			pServ.bajaUser(Integer.parseInt(id));
+			
+			 return "redirect:/Home/Productos";
+		}
+		
+		//Dar de alta a un usuario
+		@GetMapping("AltaProducto")
+		public String altaUser(Model model,@RequestParam String id) {
+			pServ.altaUser(Integer.parseInt(id));
+			
+			 return "redirect:/Home/Productos";
+		}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -56,34 +80,48 @@ public class ProductoController {
 	//AÑADIR PRODUCTO
 	@PostMapping("AddProducto")
 	public String addProducto(Model model, @RequestParam String nombre, String descripcion, String precio,String stock,String categoria) {
+		List<Categoria> categorias= cServ.getCategorias();
 		
 		if(nombre.isEmpty()==false) {				
 			if(descripcion.isEmpty()==false) {					
 				if(precio.isEmpty()==false) {						
 					if(stock.isEmpty()==false) {
-						Producto p = new Producto();
-						p.setNombre(nombre);
-						p.setDescripcion(descripcion);
-						p.setPrecio(Double.parseDouble(precio));
-						p.setImpuesto(0.21);
-						p.setStock(Integer.parseInt(stock));
-						p.setBaja(false);
-						Categoria c = cServ.getCategoria(Integer.parseInt(categoria));
-						p.setCategoria(c);
-						pServ.addProducto(p);
+						if(categoria.equals("0")) {
+							
+							model.addAttribute("categorias", categorias);
+							model.addAttribute("valores", "categorias");
+							return "/views/productos/nuevoProducto";
+							
+						}else {
+							Producto p = new Producto();
+							p.setNombre(nombre);
+							p.setDescripcion(descripcion);
+							p.setPrecio(Double.parseDouble(precio));
+							p.setImpuesto(0.21);
+							p.setStock(Integer.parseInt(stock));
+							p.setBaja(false);
+							Categoria c = cServ.getCategoria(Integer.parseInt(categoria));
+							p.setCategoria(c);
+							pServ.addProducto(p);
+							
+						}
 					}else {
+						model.addAttribute("categorias", categorias);
 						model.addAttribute("valores", "cantidad");
 						return "/views/productos/nuevoProducto";
 					}		
 				}else {
+					model.addAttribute("categorias", categorias);
 					model.addAttribute("valores", "precio");
 					return "/views/productos/nuevoProducto";		
 				}						
 			}else {
+				model.addAttribute("categorias", categorias);
 				model.addAttribute("valores", "descripcion");
 				return "/views/productos/nuevoProducto";	
 			}
 		}else {
+			model.addAttribute("categorias", categorias);
 			model.addAttribute("valores", "nombre");
 			return "/views/productos/nuevoProducto";
 		}
@@ -91,7 +129,7 @@ public class ProductoController {
 	}
 	
 	
-	//AÑADIR PRODUCTO
+	//EDITAR PRODUCTO
 		@PostMapping("EditProducto")
 		public String editProducto(Model model, @RequestParam String id, String nombre, String descripcion, String precio,String stock,String categoria) {
 			
@@ -99,24 +137,84 @@ public class ProductoController {
 				if(descripcion.isEmpty()==false) {					
 					if(precio.isEmpty()==false) {						
 						if(stock.isEmpty()==false) {
-							Categoria c = cServ.getCategoria(Integer.parseInt(categoria));
-							
-							pServ.updtProducto(Integer.parseInt(id), nombre, descripcion, Double.parseDouble(precio), 0.21, Integer.parseInt(stock), false, null,c );
+							if(categoria.equals("0")){
+								
+								
+								
+								
+								
+								Producto producto = pServ.getProducto(Integer.parseInt(id));
+								String precio2= producto.getPrecioFormateado().replace(",",".");
+								Double precioF= Double.parseDouble(precio2);
+								model.addAttribute("precio", precioF );
+								model.addAttribute("producto",producto);
+								
+								List<Categoria> categorias= cServ.getCategorias();
+								model.addAttribute("categorias", categorias);
+								model.addAttribute("valores", "categorias");
+								return "/views/productos/editProducto";
+								
+								
+								
+								
+								
+							}else {
+								Categoria c = cServ.getCategoria(Integer.parseInt(categoria));
+								
+								pServ.updtProducto(Integer.parseInt(id), nombre, descripcion, Double.parseDouble(precio), 0.21, Integer.parseInt(stock), false, null,c );
+							}
 						}else {
+							Producto producto = pServ.getProducto(Integer.parseInt(id));
+							String precio2= producto.getPrecioFormateado().replace(",",".");
+							Double precioF= Double.parseDouble(precio2);
+							model.addAttribute("precio", precioF );
+							model.addAttribute("producto",producto);
+							
+							List<Categoria> categorias= cServ.getCategorias();
+							
 							model.addAttribute("valores", "cantidad");
-							return "/views/productos/nuevoProducto";
+							model.addAttribute("categorias", categorias);
+							
+							return "/views/productos/editProducto";
 						}		
 					}else {
+						Producto producto = pServ.getProducto(Integer.parseInt(id));
+						String precio2= producto.getPrecioFormateado().replace(",",".");
+						Double precioF= Double.parseDouble(precio2);
+						model.addAttribute("precio", precioF );
+						model.addAttribute("producto",producto);
+						
+						List<Categoria> categorias= cServ.getCategorias();
+						model.addAttribute("categorias", categorias);
 						model.addAttribute("valores", "precio");
-						return "/views/productos/nuevoProducto";		
+						
+						return "/views/productos/editProducto";	
 					}						
 				}else {
+					Producto producto = pServ.getProducto(Integer.parseInt(id));
+					String precio2= producto.getPrecioFormateado().replace(",",".");
+					Double precioF= Double.parseDouble(precio2);
+					model.addAttribute("precio", precioF );
+					model.addAttribute("producto",producto);
+					
+					List<Categoria> categorias= cServ.getCategorias();
+					model.addAttribute("categorias", categorias);
 					model.addAttribute("valores", "descripcion");
-					return "/views/productos/nuevoProducto";	
+					
+					return "/views/productos/editProducto";
 				}
 			}else {
+				Producto producto = pServ.getProducto(Integer.parseInt(id));
+				String precio2= producto.getPrecioFormateado().replace(",",".");
+				Double precioF= Double.parseDouble(precio2);
+				model.addAttribute("precio", precioF );
+				model.addAttribute("producto",producto);
+				
+				List<Categoria> categorias= cServ.getCategorias();
+				model.addAttribute("categorias", categorias);
+				
 				model.addAttribute("valores", "nombre");
-				return "/views/productos/nuevoProducto";
+				return "/views/productos/editProducto";
 			}
 			return "redirect:/Home/Productos"; 
 		}

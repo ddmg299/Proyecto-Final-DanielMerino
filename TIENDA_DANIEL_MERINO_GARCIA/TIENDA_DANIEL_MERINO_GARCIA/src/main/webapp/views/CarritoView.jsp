@@ -17,13 +17,13 @@
 	
 	<main>
 	
-	<div class="container-fluid">
+	<div class="container">
 	
 			<div class="row">
-		  		<div class="col-8">
+		  		<div class="col-md-8 col-sm-12">
 			    	    		    
 				    <div class="container-fluid d-flex justify-content-center">
-						<table class="table">
+						<table class="table table-responsive">
 						<thead>
 							<tr>
 								<th>Nombre del producto</th>
@@ -45,12 +45,21 @@
 									<form action="CarritoController" method="get">
 										<input type="hidden" name="productoId" value="<%=id%>">
 										<input type="hidden" name="Cproducto" value="<%=p.getCantidad()%>">
-										<input  type="number" name="cantidad" min="1" max="<%=p.getStock() %>" value="<%=p.getCantidad() %>">
-										<button class="link-button mt-2 mb-2" type="submit" name="cambio" value="Confirmar Cambio" >Confirmar Cambio</button>
-										<button class="link-button mt-2 mb-2" type="submit" name="eliminar" value="Eliminar Producto" >Eliminar Producto</button>
+										<input   type="number" name="cantidad" min="1" max="<%=p.getStock() %>" value="<%=p.getCantidad() %>">
+										<button class="link-button mt-2 mb-2" type="submit" name="cambio" value="Confirmar Cambio" >Cambiar</button>
+<!-- 										<button class="link-button mt-2 mb-2" type="submit" name="eliminar" value="Eliminar Producto" >Eliminar Producto</button> -->
 									</form>
 								</td>
 								<td><%= p.getCantidad()*p.getPrecio()%></td>
+								<td>
+										<form action="CarritoController" method="get">
+											<input type="hidden" name="productoId" value="<%=id%>">
+											<input type="hidden" name="Cproducto" value="<%=p.getCantidad()%>">
+<%-- 											<input  type="number" name="cantidad" min="1" max="<%=p.getStock() %>" value="<%=p.getCantidad() %>"> --%>
+<!-- 											<button class="link-button mt-2 mb-2" type="submit" name="cambio" value="Confirmar Cambio" >Confirmar Cambio</button> -->
+											<button class="link-button mt-2 mb-2" type="submit" name="eliminar" value="Eliminar Producto" >Eliminar Producto</button>
+										</form>
+								</td>
 							</tr>					
 			 				<%} %> 
 						</tbody>
@@ -58,7 +67,7 @@
 					</div>
 			  </div>
 			  
-			  <div class="col-4">
+			  <div class="col-md-4 col-sm-12">
 			    <h4>TOTAL:</h4>
 			    
 			   		

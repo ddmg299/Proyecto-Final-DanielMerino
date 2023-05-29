@@ -97,8 +97,8 @@
                                             <td th:if="${producto.baja==true}" th:text="Si"></td>
 											<td>
 												
-												<a th:if="${producto.baja==false}" th:href="@{/Home}" class="link-button">Dar de Baja</a>
-	                                            <a th:if="${rol==3 && producto.baja==true}" th:href="@{/Home}" class="link-button">Dar de Alta</a>
+												<a th:if="${producto.baja==false}" th:href="@{/Producto/BajaProducto} + '?id=' + ${producto.id}" class="link-button">Dar de Baja</a>
+	                                            <a th:if="${rol==3 && producto.baja==true}" th:href="@{/Producto/AltaProducto} + '?id=' + ${producto.id}" class="link-button">Dar de Alta</a>
 	                                            <a th:href="@{/Producto/EditarProducto} + '?id=' + ${producto.id}" class="link-button">Editar</a>
 	                                            
 											</td>

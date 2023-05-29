@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.admin.model.Categoria;
 import com.admin.model.Producto;
+
 import com.admin.repository.ProductoRepository;
 @Service
 public class ProductoService {
@@ -49,5 +50,26 @@ public class ProductoService {
 	public List<Producto> getProductos(){
 		return prodRep.findAll();
 	}
-
+	
+	
+	
+	//Dar de baja usuario
+		public void bajaUser(int id){
+			Producto p = getProducto(id);
+			
+			p.setBaja(true);
+			prodRep.save(p);
+		}
+			
+			
+		//Dar de alta usuario
+		public void altaUser(int id){
+			Producto p = getProducto(id);
+			
+			p.setBaja(false);
+			prodRep.save(p);
+		}
+	
+	
+	
 }

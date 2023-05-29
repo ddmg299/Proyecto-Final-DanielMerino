@@ -29,15 +29,15 @@
 			<form action="HistorialController" method="post">
 					<label for="fecha">Fecha:</label>
 					<input type="date" name="fecha">
-					<input type="submit" name="Filtrar" value="Filtrar">
+					<button class="link-button" type="submit" name="Filtrar" value="Filtrar">Filtrar</button>
 				
 			</form>
 					
 		</div>
 
 
-		<div class="container-fluid">
-			<table class="table">
+		<div class="container">
+			<table class="table table-responsive">
 				<thead>
 					<tr>
 						<td>Num Pedido:</td>
@@ -64,7 +64,7 @@
 					<td><%=pedido.getMetodo_pago() %></td>
 					<td><%=pedido.getNum_factura() %></td>
 					<td><%=pedido.getEstado() %></td>
-					<td><%=pedido.getTotal() %></td>
+					<td><%=pedido.formatTotal() %></td>
 					<td><a class="link-button" href="DetallePedidoController?id=<%=pedido.getId()%>">Ver Productos pedidos</a></td>
 					<td><a class="link-button" href="HistorialController?id=<%=pedido.getId()%>">Cancelar Pedido</a></td>
 				</tr>
